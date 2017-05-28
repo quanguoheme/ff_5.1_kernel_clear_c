@@ -17,26 +17,26 @@
 		disp_timings: display-timings {
                         native-mode = <&timing0>;
                         timing0: timing0 {
-				screen-type = <SCREEN_LVDS>;
-				lvds-format = <LVDS_8BIT_1>;
-				out-face    = <OUT_P888>;
-				color-mode = <COLOR_RGB>;
-				clock-frequency = <83000000>;
-				hactive = <1024>;
-				vactive = <768>;
-				hback-porch = <200>;
-				hfront-porch = <70>;
-				vback-porch = <25>;
-				vfront-porch = <5>;
-				hsync-len = <50>;
-				vsync-len = <8>;
-				hsync-active = <0>;
-				vsync-active = <0>;
-				de-active = <0>;
-				pixelclk-active = <0>;
-				swap-rb = <0>;
-				swap-rg = <0>;
-				swap-gb = <0>;
+			screen-type = <0x2>;
+			lvds-format = <0x0>;
+			out-face = <0x0>;
+			color-mode = <0x0>;
+			clock-frequency = <0x4f27ac0>;
+			hactive = <0x400>;
+			vactive = <0x300>;
+			hback-porch = <0x10>;
+			hfront-porch = <0x10>;
+			vback-porch = <0x1c>;
+			vfront-porch = <0x1>;
+			hsync-len = <0x6>;
+			vsync-len = <0x3>;
+			hsync-active = <0x0>;
+			vsync-active = <0x0>;
+			de-active = <0x0>;
+			pixelclk-active = <0x0>;
+			swap-rb = <0x0>;
+			swap-rg = <0x0>;
+			swap-gb = <0x0>;
                      	};
 
 

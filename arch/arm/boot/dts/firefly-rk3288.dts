@@ -185,8 +185,8 @@
 	usb_control {
 		compatible = "rockchip,rk3288-usb-control";
 
-		host_drv_gpio = <&gpio0 GPIO_B6 GPIO_ACTIVE_LOW>;
-		otg_drv_gpio = <&gpio0 GPIO_B4 GPIO_ACTIVE_LOW>;
+		//host_drv_gpio = <&gpio0 GPIO_B6 GPIO_ACTIVE_LOW>;
+		//otg_drv_gpio = <&gpio0 GPIO_B4 GPIO_ACTIVE_LOW>;
 
 		rockchip,remote_wakeup;
 		rockchip,usb_irq_wakeup;
@@ -596,14 +596,14 @@
 		boot_depop = <1>;
 		pa_enable_time = <5000>;
 	};
-	vga_ddc@50 {
+	/*vga_ddc@50 {
 		compatible = "firefly,vga_ddc";
 		reg = <0x50>;
 		gpio-pwn = <&gpio0 GPIO_C1 GPIO_ACTIVE_HIGH>;
 		rockchip,source = <0>; //0: LCDC0; 1: LCDC1
 		rockchip,prop = <PRMRY>;//<EXTEND>
 		status = "okay";
-	};
+	};*/
 };
 
 &i2c5 {
@@ -809,7 +809,7 @@
 };
 /include/ "act8846.dtsi"
 &act8846 {
-	gpios =<&gpio7 GPIO_C5 GPIO_ACTIVE_LOW>,<&gpio0 GPIO_B2 GPIO_ACTIVE_HIGH>;
+	//gpios =<&gpio7 GPIO_C5 GPIO_ACTIVE_LOW>,<&gpio0 GPIO_B2 GPIO_ACTIVE_HIGH>;
 	act8846,system-power-controller;
 
 	regulators {

@@ -530,7 +530,7 @@ static int  vga_edid_probe(struct i2c_client *client, const struct i2c_device_id
     
 	if (!i2c_check_functionality(client->adapter, I2C_FUNC_I2C)) 
 		return -ENODEV;
-
+/*
     ldo = regulator_get(NULL, "act_ldo3");
 		if (ldo == NULL) {
 				pr_err("\n%s get ldo3 failed\n", __func__);
@@ -579,7 +579,7 @@ static int  vga_edid_probe(struct i2c_client *client, const struct i2c_device_id
 				pr_info("%s: turn on ldo done.\n", __func__);
 			}
 	}
-
+*/
 	ddev = kzalloc(sizeof(struct vga_ddc_dev), GFP_KERNEL);
 	if (ddev == NULL) 
 		return -ENOMEM;
