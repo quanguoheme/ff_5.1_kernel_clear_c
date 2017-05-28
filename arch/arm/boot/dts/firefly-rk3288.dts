@@ -24,7 +24,7 @@
 	* esp8089 ==> esp8089;
 	* other   ==> for other wifi;
 	*/
-	wifi_chip_type = "bcmwifi";
+	wifi_chip_type = "rtl8723bu";
         sdio_vref = <1800>; //1800mv or 3300mv
 
 	//keep_wifi_power_on;
@@ -37,8 +37,8 @@
         vref_pmu_regulator = "act_ldo3";
         vref_pmu_enable_level = <1>; //1->HIGH, 0->LOW
 
-        WIFI,poweren_gpio = <&gpio4 GPIO_D4 GPIO_ACTIVE_HIGH>;
-        WIFI,host_wake_irq = <&gpio4 GPIO_D6 GPIO_ACTIVE_HIGH>;
+        //WIFI,poweren_gpio = <&gpio4 GPIO_D4 GPIO_ACTIVE_HIGH>;
+        //WIFI,host_wake_irq = <&gpio4 GPIO_D6 GPIO_ACTIVE_HIGH>;
         //WIFI,reset_gpio = <&gpio0 GPIO_A2 GPIO_ACTIVE_LOW>;
 
         status = "okay";
@@ -49,15 +49,15 @@
 
         //wifi-bt-power-toggle;
 
-        uart_rts_gpios = <&gpio4 GPIO_C3 GPIO_ACTIVE_LOW>;
+        /*uart_rts_gpios = <&gpio4 GPIO_C3 GPIO_ACTIVE_LOW>;
         pinctrl-names = "default","rts_gpio";
         pinctrl-0 = <&uart0_rts>;
-        pinctrl-1 = <&uart0_rts_gpio>;
+        pinctrl-1 = <&uart0_rts_gpio>;*/
 
-        BT,power_gpio = <&gpio4 GPIO_D3 GPIO_ACTIVE_HIGH>;
-        BT,reset_gpio = <&gpio4 GPIO_D5 GPIO_ACTIVE_HIGH>;
-        BT,wake_gpio = <&gpio4 GPIO_D2 GPIO_ACTIVE_HIGH>;
-        BT,wake_host_irq = <&gpio4 GPIO_D7 GPIO_ACTIVE_LOW>;
+        BT,power_gpio = <&gpio7 GPIO_B4 GPIO_ACTIVE_HIGH>;
+       //BT,reset_gpio = <&gpio4 GPIO_D5 GPIO_ACTIVE_HIGH>;
+        //BT,wake_gpio = <&gpio4 GPIO_D2 GPIO_ACTIVE_HIGH>;
+        //BT,wake_host_irq = <&gpio4 GPIO_D7 GPIO_ACTIVE_LOW>;
 
         status = "okay";
     };
@@ -196,8 +196,8 @@
 &gmac {
 //	pmu_regulator = "act_ldo5";
 //	pmu_enable_level = <1>; //1->HIGH, 0->LOW
-//	power-gpio = <&gpio0 GPIO_A6 GPIO_ACTIVE_HIGH>;
-	reset-gpio = <&gpio4 GPIO_B0 GPIO_ACTIVE_LOW>;
+	power-gpio = <&gpio0 GPIO_A3 GPIO_ACTIVE_HIGH>;
+	//reset-gpio = <&gpio4 GPIO_B0 GPIO_ACTIVE_LOW>;
 	phy-mode = "rgmii";
 	clock_in_out = "input";
 	tx_delay = <0x30>;
@@ -488,7 +488,7 @@
 	rtc@51 {
 		compatible = "rtc,hym8563";
 		reg = <0x51>;
-		irq_gpio = <&gpio7 GPIO_A4 IRQ_TYPE_EDGE_FALLING>;
+		irq_gpio = <&gpio0 GPIO_A4 IRQ_TYPE_EDGE_FALLING>;
 	};
 };
 
@@ -557,8 +557,8 @@
 	es8323: es8323@10 {
 	    compatible = "es8323";
 		reg = <0x10>;
-		spk-con-gpio = <&gpio0 GPIO_B2 GPIO_ACTIVE_HIGH>;
-		hp-det-gpio = <&gpio7 GPIO_B7 GPIO_ACTIVE_HIGH>;
+		spk-con-gpio = <&gpio7 GPIO_B7 GPIO_ACTIVE_HIGH>;
+		//hp-det-gpio = <&gpio7 GPIO_B7 GPIO_ACTIVE_HIGH>;
 		hp-mic-only = <1>;
 		clocks = <&clk_i2s>, <&clk_i2s_out>;
 		clock-names = "i2s_clk","i2s_mclk";
@@ -625,7 +625,7 @@
 };
 
 &disp_timings {
-	native-mode = <&timing1>;
+	native-mode = <&timing0>;
 };
 
 &rk_screen {
@@ -809,9 +809,7 @@
 };
 /include/ "act8846.dtsi"
 &act8846 {
-	gpios =<&gpio7 GPIO_B6 GPIO_ACTIVE_LOW>,<&gpio0 GPIO_A1 GPIO_ACTIVE_HIGH>;
-	cpu_det_gpio =<&gpio7 GPIO_B2 GPIO_ACTIVE_LOW>;
-	usb_hub_reset_gpio =<&gpio8 GPIO_A3 GPIO_ACTIVE_LOW>;
+	gpios =<&gpio7 GPIO_C5 GPIO_ACTIVE_LOW>,<&gpio0 GPIO_B2 GPIO_ACTIVE_HIGH>;
 	act8846,system-power-controller;
 
 	regulators {

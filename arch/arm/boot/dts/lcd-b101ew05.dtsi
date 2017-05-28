@@ -38,28 +38,6 @@
 				swap-rg = <0>;
 				swap-gb = <0>;
                      	};
-                   timing1: timing1 {
-				screen-type = <SCREEN_LVDS>;
-				lvds-format = <LVDS_8BIT_1>;
-				out-face    = <OUT_P888>;
-				color-mode = <COLOR_RGB>;
-				clock-frequency = <83000000>;
-				hactive = <1024>;
-				vactive = <768>;
-				hback-porch = <200>;
-				hfront-porch = <70>;
-				vback-porch = <25>;
-				vfront-porch = <5>;
-				hsync-len = <50>;
-				vsync-len = <8>;
-				hsync-active = <0>;
-				vsync-active = <0>;
-				de-active = <0>;
-				pixelclk-active = <0>;
-				swap-rb = <0>;
-				swap-rg = <0>;
-				swap-gb = <0>;
-                     	};
 
 
 
