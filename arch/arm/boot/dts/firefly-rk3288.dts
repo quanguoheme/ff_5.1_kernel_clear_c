@@ -809,7 +809,7 @@
 };
 /include/ "act8846.dtsi"
 &act8846 {
-	//gpios =<&gpio7 GPIO_C5 GPIO_ACTIVE_LOW>,<&gpio0 GPIO_B2 GPIO_ACTIVE_HIGH>;
+	gpios =<&gpio7 GPIO_C5 GPIO_ACTIVE_LOW>,<&gpio0 GPIO_B2 GPIO_ACTIVE_HIGH>;
 	act8846,system-power-controller;
 
 	regulators {
