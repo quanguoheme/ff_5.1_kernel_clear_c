@@ -431,7 +431,7 @@ void kernel_halt(void)
 	kernel_shutdown_prepare(SYSTEM_HALT);
 	migrate_to_reboot_cpu();
 	syscore_shutdown();
-	printk(KERN_EMERG "System halted.\n");
+	printk(KERN_EMERG "quck System halted2.\n");
 	kmsg_dump(KMSG_DUMP_HALT);
 	machine_halt();
 }
@@ -501,7 +501,16 @@ SYSCALL_DEFINE4(reboot, int, magic1, int, magic2, unsigned int, cmd,
 	 * halt when pm_power_off is not set do it the easy way.
 	 */
 	if ((cmd == LINUX_REBOOT_CMD_POWER_OFF) && !pm_power_off)
+	{
 		cmd = LINUX_REBOOT_CMD_HALT;
+	}
+	else
+	{
+	
+				printk(KERN_EMERG "quck !pm_power_off:%d \n",!pm_power_off);
+				kmsg_dump(KMSG_DUMP_HALT);
+	}
+		
 
 	mutex_lock(&reboot_mutex);
 	switch (cmd) {

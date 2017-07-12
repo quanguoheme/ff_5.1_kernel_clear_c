@@ -775,25 +775,38 @@ static struct act8846_board *act8846_parse_dt(struct act8846 *act8846)
 
 	gpio = of_get_named_gpio(act8846_pmic_np,"gpios", 0);
 		if (!gpio_is_valid(gpio)) 
-			printk("invalid gpio: %d\n",gpio);
+			printk("invalid gpio:  \n""  %s,line=%d\n", __func__,__LINE__ );
 	pdata->pmic_sleep_gpio = gpio;	
 	pdata->pmic_sleep = true;
 	
 	gpio = of_get_named_gpio(act8846_pmic_np,"gpios", 1);
 		if (!gpio_is_valid(gpio)) 
-			printk("invalid gpio: %d\n",gpio);
+			printk("invalid gpio:  \n""  %s,line=%d\n", __func__,__LINE__ );
 	pdata->pmic_hold_gpio = gpio;	
 	pdata->pm_off = of_property_read_bool(act8846_pmic_np,"act8846,system-power-controller");
 
     gpio = of_get_named_gpio(act8846_pmic_np,"cpu_det_gpio", 0);
-        if (!gpio_is_valid(gpio))
-                printk("invalid gpio: %d\n",gpio);
-    pdata->pmic_cpu_det_gpio = gpio;
+    if (!gpio_is_valid(gpio))
+	{
+		printk("cpu_det_gpio invalid gpio:	 \n""  %s,line=%d\n", __func__,__LINE__ );
+		pdata->pmic_cpu_det_gpio = 0;
+	}
+	else
+	{
+		pdata->pmic_cpu_det_gpio = gpio;
+	}
     
     gpio = of_get_named_gpio(act8846_pmic_np,"usb_hub_reset_gpio", 0);
-        if (!gpio_is_valid(gpio))
-                printk("lhm invalid gpio: %d\n",gpio);
-    pdata->pmic_usb_hub_reset_gpio = gpio;
+    if (!gpio_is_valid(gpio))
+    {
+		printk("usb_hub_reset_gpio lmh invalid gpio:  \n""	%s,line=%d\n", __func__,__LINE__ );
+		pdata->pmic_usb_hub_reset_gpio = 0;
+
+	}
+	else
+	{
+		pdata->pmic_usb_hub_reset_gpio = gpio;
+	}
 
 	return pdata;
 }
@@ -819,6 +832,7 @@ void act8846_device_shutdown(void)
 	
 #if 1
 	if (act8846->pmic_hold_gpio) {
+			printk(" quck %s\n",__func__);
 			gpio_direction_output(act8846->pmic_hold_gpio,0);
 			mdelay(100);
 			arm_pm_restart('h', "charge");
@@ -864,8 +878,14 @@ static int act8846_resume(struct device *dev)
 
 
 #ifdef CONFIG_HAS_EARLYSUSPEND
-__weak void act8846_early_suspend(struct early_suspend *h) {}
-__weak void act8846_late_resume(struct early_suspend *h) {}
+__weak void act8846_early_suspend(struct early_suspend *h) 
+{
+	printk("quck %s,line=%d\n", __func__,__LINE__);	
+}
+__weak void act8846_late_resume(struct early_suspend *h) 
+{
+	printk("quck  %s,line=%d\n", __func__,__LINE__);	
+}
 #endif
 
 static bool is_volatile_reg(struct device *dev, unsigned int reg)
@@ -1035,6 +1055,11 @@ static int act8846_i2c_probe(struct i2c_client *i2c, const struct i2c_device_id 
 
 	if (pdev->pm_off && !pm_power_off) {
 		pm_power_off = act8846_device_shutdown;
+		printk("quck successfully to pm_power_off = act8846_device_shutdown;\n",i);
+	}
+	else
+	{
+		printk("quck failed to pm_power_off = act8846_device_shutdown; \n",i);
 	}
 	
 	#ifdef CONFIG_HAS_EARLYSUSPEND
