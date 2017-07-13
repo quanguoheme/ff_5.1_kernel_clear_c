@@ -17,19 +17,19 @@
 		disp_timings: display-timings {
                         native-mode = <&timing0>;
                         timing0: timing0 {
-			screen-type = <0x2>;
-			lvds-format = <0x0>;
-			out-face = <0x0>;
-			color-mode = <0x0>;
-			clock-frequency = <0x4f27ac0>;
-			hactive = <0x400>;
-			vactive = <0x300>;
-			hback-porch = <0x10>;
-			hfront-porch = <0x10>;
-			vback-porch = <0x1c>;
-			vfront-porch = <0x1>;
-			hsync-len = <0x6>;
-			vsync-len = <0x3>;
+			screen-type = <SCREEN_LVDS>;
+			lvds-format = <LVDS_8BIT_2>;
+			out-face = <OUT_D888_P666>;
+			color-mode = <0>;
+			clock-frequency = <83000000>;
+			hactive = <1280>;
+			vactive = <800>;
+			hback-porch = <0x12c>;
+			hfront-porch = <0x5>;
+			vback-porch = <0x14>;
+			vfront-porch = <0x4>;
+			hsync-len = <0xf>;
+			vsync-len = <0x7>;
 			hsync-active = <0x0>;
 			vsync-active = <0x0>;
 			de-active = <0x0>;
