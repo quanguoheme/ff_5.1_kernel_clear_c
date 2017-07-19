@@ -642,7 +642,7 @@
 	rockchip,cabc_mode = <0>;
 	power_ctr: power_ctr {
 		rockchip,debug = <0>;
-		lcd_en:lcd_en {
+		lcd_en:lcd_en {//006c  中用于 使能亮主屏电源  对应LCD_EN
 			rockchip,power_type = <GPIO>;
 			gpios = <&gpio7 GPIO_A3 GPIO_ACTIVE_HIGH>;
 			rockchip,delay = <10>;
@@ -653,13 +653,13 @@
 			gpios = <&gpio0 GPIO_A6 GPIO_ACTIVE_HIGH>;
 			rockchip,delay = <10>;
 		};*/
-		lcd_cs:lcd_cs {
+		lcd_cs:lcd_cs {  //006c  中用于使能亮主副电源 , 对应 HLCD_EN
 			rockchip,power_type = <GPIO>;
 			gpios = <&gpio5 GPIO_C1 GPIO_ACTIVE_HIGH>;
 			rockchip,delay = <10>;
 		};
  
-		lcd_rst:lcd_rst {
+		lcd_rst:lcd_rst {   //006c  中用于使能亮主副电源 ,对应pwm1 
 			rockchip,power_type = <GPIO>;
 			gpios = <&gpio7 GPIO_A1 GPIO_ACTIVE_HIGH>;
 			rockchip,delay = <5>;
