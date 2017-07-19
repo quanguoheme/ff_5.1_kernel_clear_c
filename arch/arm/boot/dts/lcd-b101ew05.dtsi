@@ -17,7 +17,7 @@
 		disp_timings: display-timings {
                         native-mode = <&timing0>;
                         timing0: timing0 {
-			screen-type = <SCREEN_LVDS>;
+			screen-type = <SCREEN_DUAL_LVDS>;
 			lvds-format = <LVDS_8BIT_2>;
 			out-face = <OUT_D888_P666>;
 			color-mode = <0>;
